@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BillingDashboardUI.MainPage"> 
+    <!-- Main layout-->
+    <Grid RowDefinitions="Auto,*">
+      <!-- Background Image-->
+      <Image Grid.Row="0" Grid.RowSpan="2" Aspect="AspectFill" Opacity="0.7" Source="circlebackground" Margin="0,-45"/>
+      <!-- Payment code -->
+        <Label Grid.Row="0" Margin="20,70,0,0" FontSize="16">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Payment: " TextColor="#e9eaf4"/>
+                    <Span Text="EKG2SJFN" FontAttributes="Bold" TextColor="White"/>
+                </FormattedString> 
+            </Label.FormattedText> 
+        </Label>
+        <!-- Main Frame-->
+        <Frame Grid.Row="1" Margin="20" HasShadow="False" CornerRadius="30" BackgroundColor="White" VerticalOptions="FillAndExpand">
+            <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="10" Padding="10,20">
+                <!-- Image with rounded borders--> 
+                <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" 
+                        Margin="0,0,20,0"
+                        Stroke="Transparent"
+                        BackgroundColor="#f2c892"
+                        StrokeThickness="4"  
+                        WidthRequest="70"
+                        HeightRequest="70"
+                        StrokeShape="RoundRectangle 11">
+                    <Image Aspect="AspectFill" Source="profile" />
+                </Border>
+                <!-- Image information-->
+                <Label Grid.Row="0" Grid.Column="1" Text="Claudia Welch" TextColor="#747995" FontSize="16" VerticalTextAlignment="End"/>
+                <Label Grid.Row="1" Grid.Column="1" Text="Apr 10, 2022" TextColor="#8d9bc8"/>
+
+                <!-- Amount & Card information-->
+                <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" Text="Amount due" Padding="0,35,0,0" TextColor="#8d9bc8"/>
+                <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" Text="$250.00" TextColor="#515875" FontSize="25" FontAttributes="Bold"/>
+                <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center" Text="Visa 5432" TextColor="#8d9bc8"/>
+
+                <!-- Billing plan-->
+                <Frame Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" HasShadow="False" BackgroundColor="Transparent" BorderColor="#f1f3fa" CornerRadius="20" Margin="0,20">
+                    <VerticalStackLayout Spacing="10">
+                         <!--Plan's title-->
+                        <Label Text="Billing plan" TextColor="#8d9bc8"/>
+                        <Label Text="Company start" FontSize="17"/>
+                          <!--Plan's description-->
+                        <Frame BackgroundColor="#f5f6fa" CornerRadius="15" BorderColor="Transparent">
+                            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+                                <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" VerticalOptions="Start" Source="alert" WidthRequest="15" HeightRequest="15" Margin="0,0,10,0"/>
+                                <Label Grid.Row="0" Grid.Column="1" Text="5 team members ($8 / month each)" FontSize="11" TextColor="#5d6788"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="+ 100 GB extra storage ($25.00)" FontSize="11" TextColor="#5d6788"/>
+                                <Label Grid.Row="2" Grid.Column="1" Text="+ 8 extra hours ($2 per 1 hour)" FontSize="11" TextColor="#5d6788"/>
+                            </Grid>
+                        </Frame>
+                    </VerticalStackLayout> 
+                </Frame> 
+
+                <!--General information-->
+               <CollectionView Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" 
+                                ItemsSource="{Binding InformationCollection}" HeightRequest="150" WidthRequest="250">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Horizontal" HorizontalItemSpacing="10"
+                                                     Span="2"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <VerticalStackLayout Margin="20">
+                                            <Label Text="{Binding Title}" TextColor="#8e99c2"/>
+                                            <Label Text="{Binding Description}" FontAttributes="Bold" TextColor="#38456e"/>
+                                        </VerticalStackLayout> 
+                                    </DataTemplate> 
+                                </CollectionView.ItemTemplate> 
+                </CollectionView>
+            </Grid> 
+        </Frame>
+    </Grid> 
+</ContentPage>
+
